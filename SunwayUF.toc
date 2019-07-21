@@ -1,0 +1,18 @@
+## Interface: 11200
+## Title: SunwayUF
+## Notes: Sunway Unit Frames
+## Version: 0.1a
+## Author: Anielle (github.com/anstellaire)
+## SavedVariables:
+
+## X-License: MIT
+## X-Website: https://github.com/anstellaire/SunwayUF
+
+API\11200.lua
+API\11302.lua
+
+UnitFrames\Templates\Mini.lua
+UnitFrames\Player.lua
+UnitFrames\Target.lua
+
+SunwayUF.lua
