@@ -16,6 +16,14 @@ SunwayUF_Colors.Power.Energy  = { r=1, g=1, b=0.3 }
 
 SunwayUF_Colors.Power.Unknown = { r=1, g=1, b=1 }
 
+function SunwayUF_UpdateHealth(unit, uf)
+    uf:SetBarRelativeWidth("HEALTH", SunwayUF_GetHealthPercentage(unit));
+end
+
+function SunwayUF_UpdatePower(unit, uf)
+    uf:SetBarRelativeWidth("POWER", SunwayUF_GetPowerPercentage(unit));
+end
+
 function SunwayUF_UpdateHealthColor(unit, uf)
     local color;
 
