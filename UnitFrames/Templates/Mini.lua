@@ -25,6 +25,12 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
     healthBar:SetVertexColor(1, 1, 1, 1);
     healthBar:SetAlpha(1);
 
+    local healthBarText = frame:CreateFontString(nil,"OVERLAY");
+    healthBarText:SetFont("Fonts\\ARIALN.ttf", 10, "HIGHLIGHT");
+    healthBarText:SetPoint("CENTER",0,5)
+    healthBarText:SetTextColor(0, 0, 0);
+    healthBarText:SetText(nil);
+
     local manaBar = frame:CreateTexture(nil, "OVERLAY");
     manaBar:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
     manaBar:SetHeight(height/2-3);
@@ -33,11 +39,19 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
     manaBar:SetVertexColor(1, 1, 1, 1);
     manaBar:SetAlpha(1);
 
+    local manaBarText = frame:CreateFontString(nil,"OVERLAY");
+    manaBarText:SetFont("Fonts\\ARIALN.ttf", 10, "HIGHLIGHT");
+    manaBarText:SetPoint("CENTER",0,-5)
+    manaBarText:SetTextColor(0, 0, 0);
+    manaBarText:SetText(nil);
+
     local newObj = {}
     newObj.frame = frame;
     newObj.body = body;
     newObj.healthBar = healthBar;
     newObj.manaBar = manaBar;
+    newObj.healthBarText = healthBarText;
+    newObj.manaBarText = manaBarText;
 
     return setmetatable(newObj, SunwayUF_MiniUnitFrame);
 end
@@ -56,6 +70,14 @@ function SunwayUF_MiniUnitFrame:SetBarTexture(barName, texturePath)
     elseif barName == "POWER" then
         self.manaBar:SetTexture(texturePath);
     end 
+end
+
+function SunwayUF_MiniUnitFrame:SetBarText(barName, text)
+    if barName == "HEALTH" then
+        self.healthBarText:SetText(text);
+    elseif barName == "POWER" then
+        self.manaBarText:SetText(text);
+    end
 end
 
 function SunwayUF_MiniUnitFrame:SetBarRelativeWidth(barName, percentage)

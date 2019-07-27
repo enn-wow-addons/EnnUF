@@ -24,6 +24,14 @@ function SunwayUF_UpdatePower(unit, uf)
     uf:SetBarRelativeWidth("POWER", SunwayUF_GetPowerPercentage(unit));
 end
 
+function SunwayUF_UpdateHealthText(unit, uf)
+    uf:SetBarText("HEALTH", SunwayUF_UnitHealth(unit));
+end
+
+function SunwayUF_UpdatePowerText(unit, uf)
+    uf:SetBarText("POWER", SunwayUF_UnitPower(unit));
+end
+
 function SunwayUF_UpdateHealthColor(unit, uf)
     local color;
 

@@ -17,6 +17,10 @@ if true then
         return UnitMana(unit) / UnitManaMax(unit);
     end
 
+    function SunwayUF_UnitPower(unit, type)
+        return UnitMana(unit);
+    end
+
     SunwayUF_UnitClass = UnitClass;
     SunwayUF_UnitReaction = UnitReaction;
     SunwayUF_UnitIsPVP = UnitIsPVP;
@@ -24,5 +28,6 @@ if true then
     SunwayUF_UnitIsPlayer = UnitIsPlayer;
     SunwayUF_UnitIsFriend = UnitIsFriend;
     SunwayUF_UnitExists = UnitExists;
+    SunwayUF_UnitHealth = UnitHealth;
 
 end

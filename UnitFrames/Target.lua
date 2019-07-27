@@ -35,6 +35,9 @@ SunwayUF_TargetUF_HandleEvent["ADDON_LOADED"] = function()
         SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
         SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
 
+        SunwayUF_UpdateHealthText("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePowerText("target", SunwayUF_TargetUnitFrame);
+
         SunwayUF_TargetUnitFrame:Show();
     else
         SunwayUF_TargetUnitFrame:Hide();
@@ -48,6 +51,9 @@ SunwayUF_TargetUF_HandleEvent["PLAYER_ENTERING_WORLD"] = function()
 
         SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
         SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+
+        SunwayUF_UpdateHealthText("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePowerText("target", SunwayUF_TargetUnitFrame);
 
         SunwayUF_TargetUnitFrame:Show();
     else
@@ -63,6 +69,9 @@ SunwayUF_TargetUF_HandleEvent["PLAYER_TARGET_CHANGED"] = function()
         SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
         SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
 
+        SunwayUF_UpdateHealthText("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePowerText("target", SunwayUF_TargetUnitFrame);
+
         SunwayUF_TargetUnitFrame:Show();
     else
         SunwayUF_TargetUnitFrame:Hide();
@@ -72,6 +81,9 @@ end
 SunwayUF_TargetUF_HandleEvent["UNIT_AURA"] = function()
     SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
     SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
+
+    SunwayUF_UpdateHealthText("target", SunwayUF_TargetUnitFrame);
+    SunwayUF_UpdatePowerText("target", SunwayUF_TargetUnitFrame);
 
     local _, targetClass = SunwayUF_UnitClass("target");
     if targetClass == "DRUID" then
@@ -85,18 +97,26 @@ end
 
 SunwayUF_TargetUF_HandleEvent["UNIT_HEALTH"] = function()
     SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
+
+    SunwayUF_UpdateHealthText("target", SunwayUF_TargetUnitFrame);
 end
 
 SunwayUF_TargetUF_HandleEvent["UNIT_HEALTH_FREQUENT"] = function()
     SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
+
+    SunwayUF_UpdateHealthText("target", SunwayUF_TargetUnitFrame);
 end
 
 SunwayUF_TargetUF_HandleEvent["UNIT_MANA"] = function()
     SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
+
+    SunwayUF_UpdatePowerText("target", SunwayUF_TargetUnitFrame);
 end
 
 SunwayUF_TargetUF_HandleEvent["UNIT_ENERGY"] = function()
     SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
+
+    SunwayUF_UpdatePowerText("target", SunwayUF_TargetUnitFrame);
 end
 
 function SunwayUF_TargetUF_OnEvent()

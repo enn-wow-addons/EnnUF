@@ -33,5 +33,7 @@ if false then
     SunwayUF_UnitIsPlayer = UnitIsPlayer;
     SunwayUF_UnitIsFriend = UnitIsFriend;
     SunwayUF_UnitExists = UnitExists;
+    SunwayUF_UnitPower = UnitPower;
+    SunwayUF_UnitHealth = UnitHealth;
 
 end
