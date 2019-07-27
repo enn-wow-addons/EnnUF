@@ -66,6 +66,14 @@ function SunwayUF_MiniUnitFrame:SetBarRelativeWidth(barName, percentage)
     end
 end
 
+function SunwayUF_MiniUnitFrame:Show()
+    self.frame:Show();
+end
+
+function SunwayUF_MiniUnitFrame:Hide()
+    self.frame:Hide();
+end
+
 function SunwayUF_MiniUnitFrame:SetEventHandler(eventHandler)
     self.frame:SetScript("OnEvent", eventHandler);
 end

@@ -28,27 +28,45 @@ end
 SunwayUF_TargetUF_HandleEvent = {}
 
 SunwayUF_TargetUF_HandleEvent["ADDON_LOADED"] = function()
-    SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
-    SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
+    if SunwayUF_UnitExists("target") then
+        SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
 
-    SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
-    SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+
+        SunwayUF_TargetUnitFrame:Show();
+    else
+        SunwayUF_TargetUnitFrame:Hide();
+    end
 end
 
 SunwayUF_TargetUF_HandleEvent["PLAYER_ENTERING_WORLD"] = function()
-    SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
-    SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
+    if SunwayUF_UnitExists("target") then
+        SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
 
-    SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
-    SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+
+        SunwayUF_TargetUnitFrame:Show();
+    else
+        SunwayUF_TargetUnitFrame:Hide();
+    end
 end
 
 SunwayUF_TargetUF_HandleEvent["PLAYER_TARGET_CHANGED"] = function()
-    SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
-    SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
+    if SunwayUF_UnitExists("target") then
+        SunwayUF_UpdateHealth("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePower("target", SunwayUF_TargetUnitFrame);
 
-    SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
-    SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdateHealthColor("target", SunwayUF_TargetUnitFrame);
+        SunwayUF_UpdatePowerColor("target", SunwayUF_TargetUnitFrame);
+
+        SunwayUF_TargetUnitFrame:Show();
+    else
+        SunwayUF_TargetUnitFrame:Hide();
+    end
 end
 
 SunwayUF_TargetUF_HandleEvent["UNIT_AURA"] = function()
