@@ -1,21 +1,3 @@
-
-SunwayUF_Colors = {}
-
-SunwayUF_Colors.Health = {}
-SunwayUF_Colors.Health.Friend    = { r=0, g=1, b=0 }
-SunwayUF_Colors.Health.Enemy     = { r=1, g=0, b=0 }
-SunwayUF_Colors.Health.Neutral   = { r=1, g=1, b=0 }
-SunwayUF_Colors.Health.Unflagged = { r=0, g=0.2, b=1 }
-SunwayUF_Colors.Health.Unknown   = { r=1, g=1, b=1 }
-
-SunwayUF_Colors.Power = {}
-SunwayUF_Colors.Power.Mana    = { r=0.3, g=0.3, b=1 }
-SunwayUF_Colors.Power.Rage    = { r=1, g=0.3, b=0.3 }
-SunwayUF_Colors.Power.Focus   = { r=1, g=0.6, b=0.3 }
-SunwayUF_Colors.Power.Energy  = { r=1, g=1, b=0.3 }
-
-SunwayUF_Colors.Power.Unknown = { r=1, g=1, b=1 }
-
 function SunwayUF_UpdateHealth(unit, uf)
     uf:SetBarRelativeWidth("HEALTH", SunwayUF_GetHealthPercentage(unit));
 end
@@ -37,25 +19,25 @@ function SunwayUF_UpdateHealthColor(unit, uf)
 
     if SunwayUF_UnitIsPlayer(unit) then
         if not SunwayUF_UnitIsPVP(unit) then
-            color = SunwayUF_Colors.Health.Unflagged
+            color = EnnUF.Colors.Health.Unflagged
         elseif SunwayUF_UnitIsFriend(unit, "player") then
-            color = SunwayUF_Colors.Health.Friend
+            color = EnnUF.Colors.Health.Friend
         elseif not SunwayUF_UnitIsPVP("player") then
-            color = SunwayUF_Colors.Health.Neutral
+            color = EnnUF.Colors.Health.Neutral
         else
-            color = SunwayUF_Colors.Health.Enemy
+            color = EnnUF.Colors.Health.Enemy
         end
     else
         local reaction = SunwayUF_UnitReaction(unit, "player");
     
         if not reaction then
-            color = SunwayUF_Colors.Health.Unknown;
+            color = EnnUF.Colors.Health.Unknown;
         elseif reaction < 4 then
-            color = SunwayUF_Colors.Health.Enemy;
+            color = EnnUF.Colors.Health.Enemy;
         elseif reaction > 4 then
-            color = SunwayUF_Colors.Health.Friend;
+            color = EnnUF.Colors.Health.Friend;
         else
-            color = SunwayUF_Colors.Health.Neutral;
+            color = EnnUF.Colors.Health.Neutral;
         end
     end
 
@@ -66,15 +48,15 @@ function SunwayUF_UpdatePowerColor(unit, uf)
     local powerType = SunwayUF_UnitPowerType(unit);
 
     if powerType == 0 then
-        color = SunwayUF_Colors.Power.Mana;
+        color = EnnUF.Colors.Power.Mana;
     elseif powerType == 1 then
-        color = SunwayUF_Colors.Power.Rage;
+        color = EnnUF.Colors.Power.Rage;
     elseif powerType == 2 then
-        color = SunwayUF_Colors.Power.Focus;
+        color = EnnUF.Colors.Power.Focus;
     elseif powerType == 3 then
-        color = SunwayUF_Colors.Power.Energy;
+        color = EnnUF.Colors.Power.Energy;
     else 
-        color = SunwayUF_Colors.Power.Unknown;
+        color = EnnUF.Colors.Power.Unknown;
     end
 
     uf:SetBarColor("POWER", color.r, color.g, color.b, 1);
