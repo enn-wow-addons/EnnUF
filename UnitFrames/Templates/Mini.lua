@@ -21,7 +21,7 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
     healthBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2);
     healthBar:SetHeight(height/2-3);
     healthBar:SetWidth(width-4);
-    healthBar:SetTexture("Interface\\AddOns\\SunwayUF\\UnitFrames\\Textures\\Bar.tga");
+    healthBar:SetTexture(EnnUF_Assets.Textures.Bars.Default);
     healthBar:SetVertexColor(1, 1, 1, 1);
     healthBar:SetAlpha(1);
 
@@ -35,7 +35,7 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
     manaBar:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
     manaBar:SetHeight(height/2-3);
     manaBar:SetWidth(width-4);
-    manaBar:SetTexture("Interface\\AddOns\\SunwayUF\\UnitFrames\\Textures\\Bar.tga");
+    manaBar:SetTexture(EnnUF_Assets.Textures.Bars.Default);
     manaBar:SetVertexColor(1, 1, 1, 1);
     manaBar:SetAlpha(1);
 
