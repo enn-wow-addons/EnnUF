@@ -1,4 +1,4 @@
-## Interface: 11200
+## Interface: 30300
 ## Title: SunwayUF
 ## Notes: Sunway Unit Frames
 ## Version: 0.1a
