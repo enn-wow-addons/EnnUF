@@ -6,7 +6,7 @@ local SunwayUF_PlayerUnitFrame;
 ------------------
 
 function SunwayUF_PlayerUF_Load()
-    SunwayUF_PlayerUnitFrame = SunwayUF_MiniUnitFrame:new(0, -250, 180, 14);
+    SunwayUF_PlayerUnitFrame = EnnUF.UnitFrame:new(0, -250, 180, 14);
 
     SunwayUF_PlayerUnitFrame:SetEventHandler(SunwayUF_PlayerUF_OnEvent);
 

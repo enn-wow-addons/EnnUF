@@ -3,10 +3,10 @@
 -- MiniUnitFrame Class --
 -------------------------
 
-SunwayUF_MiniUnitFrame = {}
-SunwayUF_MiniUnitFrame.__index = SunwayUF_MiniUnitFrame;
+EnnUF.UnitFrame = {}
+EnnUF.UnitFrame.__index = EnnUF.UnitFrame;
 
-function SunwayUF_MiniUnitFrame:new(x, y, width, height)
+function EnnUF.UnitFrame:new(x, y, width, height)
     local frame=CreateFrame("Frame", nil, UIParent);
     frame:SetPoint("CENTER", UIParent, "CENTER", x, y);
     frame:SetHeight(height);
@@ -14,19 +14,19 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
 
     local body = frame:CreateTexture(nil, "ARTWORK")
     body:SetAllPoints(frame);
-    body:SetTexture("Interface\\ChatFrame\\ChatFrameBackground");
+    body:SetTexture(EnnUF.Backgrounds.Default);
     body:SetVertexColor(0, 0, 0, 0.7);
 
     local healthBar = frame:CreateTexture(nil, "OVERLAY");
     healthBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2);
     healthBar:SetHeight(height/2-3);
     healthBar:SetWidth(width-4);
-    healthBar:SetTexture(EnnUF_Assets.Textures.Bars.Default);
+    healthBar:SetTexture(EnnUF.Bars.Default);
     healthBar:SetVertexColor(1, 1, 1, 1);
     healthBar:SetAlpha(1);
 
     local healthBarText = frame:CreateFontString(nil,"OVERLAY");
-    healthBarText:SetFont("Fonts\\ARIALN.ttf", 10, "HIGHLIGHT");
+    healthBarText:SetFont(EnnUF.Fonts.Default, 10, "HIGHLIGHT");
     healthBarText:SetPoint("CENTER",0,5)
     healthBarText:SetTextColor(0, 0, 0);
     healthBarText:SetText(nil);
@@ -35,12 +35,12 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
     manaBar:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
     manaBar:SetHeight(height/2-3);
     manaBar:SetWidth(width-4);
-    manaBar:SetTexture(EnnUF_Assets.Textures.Bars.Default);
+    manaBar:SetTexture(EnnUF.Bars.Default);
     manaBar:SetVertexColor(1, 1, 1, 1);
     manaBar:SetAlpha(1);
 
     local manaBarText = frame:CreateFontString(nil,"OVERLAY");
-    manaBarText:SetFont("Fonts\\ARIALN.ttf", 10, "HIGHLIGHT");
+    manaBarText:SetFont(EnnUF.Fonts.Default, 10, "HIGHLIGHT");
     manaBarText:SetPoint("CENTER",0,-5)
     manaBarText:SetTextColor(0, 0, 0);
     manaBarText:SetText(nil);
@@ -53,10 +53,10 @@ function SunwayUF_MiniUnitFrame:new(x, y, width, height)
     newObj.healthBarText = healthBarText;
     newObj.manaBarText = manaBarText;
 
-    return setmetatable(newObj, SunwayUF_MiniUnitFrame);
+    return setmetatable(newObj, EnnUF.UnitFrame);
 end
 
-function SunwayUF_MiniUnitFrame:SetBarColor(barName, r, g, b, a)
+function EnnUF.UnitFrame:SetBarColor(barName, r, g, b, a)
     if barName == "HEALTH" then
         self.healthBar:SetVertexColor(r,g,b,a);
     elseif barName == "POWER" then
@@ -64,7 +64,7 @@ function SunwayUF_MiniUnitFrame:SetBarColor(barName, r, g, b, a)
     end
 end
 
-function SunwayUF_MiniUnitFrame:SetBarTexture(barName, texturePath)
+function EnnUF.UnitFrame:SetBarTexture(barName, texturePath)
     if barName == "HEALTH" then
         self.healthBar:SetTexture(texturePath);
     elseif barName == "POWER" then
@@ -72,7 +72,7 @@ function SunwayUF_MiniUnitFrame:SetBarTexture(barName, texturePath)
     end 
 end
 
-function SunwayUF_MiniUnitFrame:SetBarText(barName, text)
+function EnnUF.UnitFrame:SetBarText(barName, text)
     if barName == "HEALTH" then
         self.healthBarText:SetText(text);
     elseif barName == "POWER" then
@@ -80,7 +80,7 @@ function SunwayUF_MiniUnitFrame:SetBarText(barName, text)
     end
 end
 
-function SunwayUF_MiniUnitFrame:SetBarRelativeWidth(barName, percentage)
+function EnnUF.UnitFrame:SetBarRelativeWidth(barName, percentage)
     if barName == "HEALTH" then
         self.healthBar:SetWidth(self.frame:GetWidth() * percentage-4);
     elseif barName == "POWER" then
@@ -88,18 +88,18 @@ function SunwayUF_MiniUnitFrame:SetBarRelativeWidth(barName, percentage)
     end
 end
 
-function SunwayUF_MiniUnitFrame:Show()
+function EnnUF.UnitFrame:Show()
     self.frame:Show();
 end
 
-function SunwayUF_MiniUnitFrame:Hide()
+function EnnUF.UnitFrame:Hide()
     self.frame:Hide();
 end
 
-function SunwayUF_MiniUnitFrame:SetEventHandler(eventHandler)
+function EnnUF.UnitFrame:SetEventHandler(eventHandler)
     self.frame:SetScript("OnEvent", eventHandler);
 end
 
-function SunwayUF_MiniUnitFrame:RegisterEvent(eventName)
+function EnnUF.UnitFrame:RegisterEvent(eventName)
     self.frame:RegisterEvent(eventName);
 end
