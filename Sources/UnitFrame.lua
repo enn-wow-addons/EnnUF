@@ -58,52 +58,6 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
 end
 
 -------------
--- Helpers --
--------------
-
-local function EnnUF_GetHealthColor(unit)
-    if SunwayUF_UnitIsPlayer(unit) then
-        if not SunwayUF_UnitIsPVP(unit) then
-            return EnnUF.Colors.Health.Unflagged
-        elseif SunwayUF_UnitIsFriend(unit, "player") then
-            return EnnUF.Colors.Health.Friend
-        elseif not SunwayUF_UnitIsPVP("player") then
-            return EnnUF.Colors.Health.Neutral
-        else
-            return EnnUF.Colors.Health.Enemy
-        end
-    else
-        local reaction = SunwayUF_UnitReaction(unit, "player");
-
-        if not reaction then
-            return EnnUF.Colors.Health.Unknown;
-        elseif reaction < 4 then
-            return EnnUF.Colors.Health.Enemy;
-        elseif reaction > 4 then
-            return EnnUF.Colors.Health.Friend;
-        else
-            return EnnUF.Colors.Health.Neutral;
-        end
-    end
-end
-
-local function EnnUF_GetPowerColor(unit, uf)
-    local powerType = SunwayUF_UnitPowerType(unit);
-
-    if powerType == 0 then
-        return EnnUF.Colors.Power.Mana;
-    elseif powerType == 1 then
-        return EnnUF.Colors.Power.Rage;
-    elseif powerType == 2 then
-        return EnnUF.Colors.Power.Focus;
-    elseif powerType == 3 then
-        return EnnUF.Colors.Power.Energy;
-    else
-        return EnnUF.Colors.Power.Unknown;
-    end
-end
-
--------------
 -- Methods --
 -------------
 
@@ -118,13 +72,13 @@ function EnnUF.UnitFrame:UpdatePowerColor()
 end
 
 function EnnUF.UnitFrame:UpdateHealth()
-    self.healthBar:SetWidth(self.frame:GetWidth() * SunwayUF_GetHealthPercentage(self.unitid)-4);
-    self.healthBarText:SetText(SunwayUF_UnitHealth(self.unitid));
+    self.healthBar:SetWidth(self.frame:GetWidth() * EnnUF_GetHealthPercentage(self.unitid)-4);
+    self.healthBarText:SetText(EnnUF_UnitHealth(self.unitid));
 end
 
 function EnnUF.UnitFrame:UpdatePower()
-    self.manaBar:SetWidth(self.frame:GetWidth() * SunwayUF_GetPowerPercentage(self.unitid)-4);
-    self.manaBarText:SetText(SunwayUF_UnitPower(self.unitid));
+    self.manaBar:SetWidth(self.frame:GetWidth() * EnnUF_GetPowerPercentage(self.unitid)-4);
+    self.manaBarText:SetText(EnnUF_UnitPower(self.unitid));
 end
 
 function EnnUF.UnitFrame:Show()
@@ -151,7 +105,7 @@ EnnUF_UnitFrame_EventHandle = {}
 
 EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
     -- TODO: update iff unit == target
-    if SunwayUF_UnitExists(uf.unitid) then
+    if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth();
         uf:UpdatePower();
 
@@ -165,7 +119,7 @@ EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
-    if SunwayUF_UnitExists(uf.unitid) then
+    if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth();
         uf:UpdatePower();
 
@@ -179,7 +133,7 @@ EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = function(uf)
-    if SunwayUF_UnitExists(uf.unitid) then
+    if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth();
         uf:UpdatePower();
 
@@ -196,7 +150,7 @@ EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = function(uf)
     uf:UpdateHealth();
     uf:UpdatePower();
 
-    local _, unitClass = SunwayUF_UnitClass(uf.unitid);
+    local _, unitClass = EnnUF_UnitClass(uf.unitid);
     if unitClass == "DRUID" then
         uf:UpdatePowerColor();
     end
