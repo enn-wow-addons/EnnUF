@@ -5,7 +5,7 @@
 
 local EnnUF_PlayerFrame;
 
-function EnnUF_PlayerUF_Load()
+local function EnnUF_PlayerUF_Load()
     EnnUF_PlayerFrame = EnnUF.UnitFrame:new("player", 0, -250, 180, 14);
 
     EnnUF_PlayerFrame:SetEventHandler(function()
@@ -30,7 +30,7 @@ end
 
 local EnnUF_TargetFrame;
 
-function EnnUF_TargetUF_Load()
+local function EnnUF_TargetUF_Load()
     EnnUF_TargetFrame = EnnUF.UnitFrame:new("target", 0, -200, 200, 20);
 
     EnnUF_TargetFrame:SetEventHandler(function()
