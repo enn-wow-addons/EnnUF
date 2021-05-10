@@ -65,8 +65,7 @@ function EnnUF.UnitFrame:UpdateHealthColor(color)
     self.healthBar:SetVertexColor(color.r, color.g, color.b, color.a);
 end
 
-function EnnUF.UnitFrame:UpdatePowerColor()
-    local color = EnnUF_GetPowerColor(self.unitid);
+function EnnUF.UnitFrame:UpdatePowerColor(color)
     self.manaBar:SetVertexColor(color.r, color.g, color.b, color.a);
 end
 
@@ -108,7 +107,7 @@ EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
         uf:UpdatePower();
 
         uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
-        uf:UpdatePowerColor();
+        uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
 
         uf:Show();
     else
@@ -122,7 +121,7 @@ EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
         uf:UpdatePower();
 
         uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
-        uf:UpdatePowerColor();
+        uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
 
         uf:Show();
     else
@@ -136,7 +135,7 @@ EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = function(uf)
         uf:UpdatePower();
 
         uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
-        uf:UpdatePowerColor();
+        uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
 
         uf:Show();
     else
@@ -150,7 +149,7 @@ EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = function(uf)
 
     local _, unitClass = EnnUF_UnitClass(uf.unitid);
     if unitClass == "DRUID" then
-        uf:UpdatePowerColor();
+        uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
     end
 end
 
