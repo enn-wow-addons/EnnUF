@@ -76,7 +76,7 @@ end
 
 function EnnUF.UnitFrame:UpdatePower(percent, text)
     self.manaBar:SetWidth(self.frame:GetWidth() * percent - 4);
-    self.manaBarText:SetText(EnnUF_UnitPower(self.unitid));
+    self.manaBarText:SetText(text);
 end
 
 function EnnUF.UnitFrame:Show()
@@ -104,7 +104,7 @@ EnnUF_UnitFrame_EventHandle = {}
 EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
     if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth(EnnUF_GetHealthPercentage(uf.unitid), EnnUF_UnitHealth(uf.unitid));
-        uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid));
+        uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
 
         uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
         uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
@@ -118,7 +118,7 @@ end
 EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
     if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth(EnnUF_GetHealthPercentage(uf.unitid), EnnUF_UnitHealth(uf.unitid));
-        uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid));
+        uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
 
         uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
         uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
@@ -132,7 +132,7 @@ end
 EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = function(uf)
     if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth(EnnUF_GetHealthPercentage(uf.unitid), EnnUF_UnitHealth(uf.unitid));
-        uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid));
+        uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
 
         uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
         uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
@@ -145,7 +145,7 @@ end
 
 EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = function(uf)
     uf:UpdateHealth(EnnUF_GetHealthPercentage(uf.unitid), EnnUF_UnitHealth(uf.unitid));
-    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid));
+    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
 
     local _, unitClass = EnnUF_UnitClass(uf.unitid);
     if unitClass == "DRUID" then
@@ -166,9 +166,9 @@ EnnUF_UnitFrame_EventHandle["UNIT_HEALTH_FREQUENT"] = function(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_MANA"] = function(uf)
-    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid));
+    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_ENERGY"] = function(uf)
-    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid));
+    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
 end
