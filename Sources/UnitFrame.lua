@@ -61,8 +61,7 @@ end
 -- Methods --
 -------------
 
-function EnnUF.UnitFrame:UpdateHealthColor()
-    local color = EnnUF_GetHealthColor(self.unitid);
+function EnnUF.UnitFrame:UpdateHealthColor(color)
     self.healthBar:SetVertexColor(color.r, color.g, color.b, color.a);
 end
 
@@ -109,7 +108,7 @@ EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
         uf:UpdateHealth();
         uf:UpdatePower();
 
-        uf:UpdateHealthColor();
+        uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
         uf:UpdatePowerColor();
 
         uf:Show();
@@ -123,7 +122,7 @@ EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
         uf:UpdateHealth();
         uf:UpdatePower();
 
-        uf:UpdateHealthColor();
+        uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
         uf:UpdatePowerColor();
 
         uf:Show();
@@ -137,7 +136,7 @@ EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = function(uf)
         uf:UpdateHealth();
         uf:UpdatePower();
 
-        uf:UpdateHealthColor();
+        uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
         uf:UpdatePowerColor();
 
         uf:Show();
@@ -157,7 +156,7 @@ EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = function(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_FLAGS"] = function(uf)
-    uf:UpdateHealthColor();
+    uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_HEALTH"] = function(uf)
