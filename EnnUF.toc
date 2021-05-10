@@ -1,12 +1,12 @@
 ## Interface: 30300
-## Title: SunwayUF
-## Notes: Sunway Unit Frames
+## Title: EnnUF
+## Notes: Enn Unit Frames
 ## Version: 0.1a
 ## Author: Anielle (github.com/anstellaire)
 ## SavedVariables:
 
 ## X-License: MIT
-## X-Website: https://github.com/anstellaire/SunwayUF
+## X-Website: https://github.com/anstellaire/EnnUF
 
 Assets\Assets.lua
 
