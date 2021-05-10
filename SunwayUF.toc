@@ -8,13 +8,9 @@
 ## X-License: MIT
 ## X-Website: https://github.com/anstellaire/SunwayUF
 
-API\11200.lua
-API\11302.lua
-
 Assets\Assets.lua
 
-UnitFrames\Templates\Mini.lua
-UnitFrames\Player.lua
-UnitFrames\Target.lua
-
-SunwayUF.lua
+Sources\API\11200.lua
+Sources\API\11302.lua
+Sources\UnitFrame.lua
+Sources\Main.lua
