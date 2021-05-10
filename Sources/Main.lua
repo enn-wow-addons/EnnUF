@@ -16,12 +16,13 @@ local function EnnUF_PlayerUF_Load()
 
     EnnUF_PlayerFrame:RegisterEvent("ADDON_LOADED");
     EnnUF_PlayerFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
-    EnnUF_PlayerFrame:RegisterEvent("PLAYER_AURAS_CHANGED");
-    EnnUF_PlayerFrame:RegisterEvent("UNIT_FLAGS");
     EnnUF_PlayerFrame:RegisterEvent("UNIT_HEALTH");
     EnnUF_PlayerFrame:RegisterEvent("UNIT_HEALTH_FREQUENT");
     EnnUF_PlayerFrame:RegisterEvent("UNIT_MANA");
     EnnUF_PlayerFrame:RegisterEvent("UNIT_ENERGY");
+
+    EnnUF_PlayerFrame:RegisterEvent("UNIT_FLAGS");
+    EnnUF_PlayerFrame:RegisterEvent("PLAYER_AURAS_CHANGED");
 end
 
 ------------------------------
@@ -41,13 +42,14 @@ local function EnnUF_TargetUF_Load()
 
     EnnUF_TargetFrame:RegisterEvent("ADDON_LOADED");
     EnnUF_TargetFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
-    EnnUF_TargetFrame:RegisterEvent("PLAYER_TARGET_CHANGED");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_AURA");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_FLAGS");
     EnnUF_TargetFrame:RegisterEvent("UNIT_HEALTH");
     EnnUF_TargetFrame:RegisterEvent("UNIT_HEALTH_FREQUENT");
     EnnUF_TargetFrame:RegisterEvent("UNIT_MANA");
     EnnUF_TargetFrame:RegisterEvent("UNIT_ENERGY");
+
+    EnnUF_TargetFrame:RegisterEvent("UNIT_FLAGS");
+    EnnUF_TargetFrame:RegisterEvent("UNIT_AURA");
+    EnnUF_TargetFrame:RegisterEvent("PLAYER_TARGET_CHANGED");
 end
 
 ------------
