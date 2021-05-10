@@ -12,4 +12,5 @@ Assets\Assets.lua
 
 Sources\Helpers.lua
 Sources\UnitFrame.lua
+Sources\UnitFrameEvents.lua
 Sources\Main.lua
