@@ -103,7 +103,6 @@ end
 EnnUF_UnitFrame_EventHandle = {}
 
 EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
-    -- TODO: update iff unit == target
     if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth();
         uf:UpdatePower();
