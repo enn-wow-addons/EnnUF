@@ -51,17 +51,17 @@ end
 
 EnnUF_UnitFrame_EventHandle = {}
 
-EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = UpdateUnitFrameFull
+EnnUF_UnitFrame_EventHandle["ADDON_LOADED"]          = UpdateUnitFrameFull
 EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = UpdateUnitFrameFull
 EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = UpdateUnitFrameFull
-EnnUF_UnitFrame_EventHandle["PLAYER_FOCUS_CHANGED"] = UpdateUnitFrameFull
-EnnUF_UnitFrame_EventHandle["UNIT_TARGET"] = UpdateUnitFrameFull
+EnnUF_UnitFrame_EventHandle["PLAYER_FOCUS_CHANGED"]  = UpdateUnitFrameFull
+EnnUF_UnitFrame_EventHandle["UNIT_TARGET"]           = UpdateUnitFrameFull
 
-EnnUF_UnitFrame_EventHandle["UNIT_HEALTH"] = UpdateUnitFrameHealth
+EnnUF_UnitFrame_EventHandle["UNIT_HEALTH"]          = UpdateUnitFrameHealth
 EnnUF_UnitFrame_EventHandle["UNIT_HEALTH_FREQUENT"] = UpdateUnitFrameHealth
 
-EnnUF_UnitFrame_EventHandle["UNIT_MANA"] = UpdateUnitFramePower
+EnnUF_UnitFrame_EventHandle["UNIT_MANA"]   = UpdateUnitFramePower
 EnnUF_UnitFrame_EventHandle["UNIT_ENERGY"] = UpdateUnitFramePower
 
-EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = UpdateUnitFrameSpecialAura
+EnnUF_UnitFrame_EventHandle["UNIT_AURA"]  = UpdateUnitFrameSpecialAura
 EnnUF_UnitFrame_EventHandle["UNIT_FLAGS"] = UpdateUnitFrameSpecialFlags
