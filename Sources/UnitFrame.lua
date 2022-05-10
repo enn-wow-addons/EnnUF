@@ -89,13 +89,19 @@ function EnnUF.UnitFrame:UpdatePowerColor(color)
     self.manaBar:SetVertexColor(color.r, color.g, color.b, color.a);
 end
 
-function EnnUF.UnitFrame:UpdateHealth(percent, text)
+function EnnUF.UnitFrame:UpdateHealth(percent)
     self.healthBar:SetWidth(self.frame:GetWidth() * percent - 4);
+end
+
+function EnnUF.UnitFrame:UpdatePower(percent)
+    self.manaBar:SetWidth(self.frame:GetWidth() * percent - 4);
+end
+
+function EnnUF.UnitFrame:UpdateHealthText(text)
     self.healthBarText:SetText(text);
 end
 
-function EnnUF.UnitFrame:UpdatePower(percent, text)
-    self.manaBar:SetWidth(self.frame:GetWidth() * percent - 4);
+function EnnUF.UnitFrame:UpdatePowerText(text)
     self.manaBarText:SetText(text);
 end
 
