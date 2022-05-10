@@ -12,12 +12,20 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     frame:SetHeight(height);
     frame:SetWidth(width);
 
-    local body = frame:CreateTexture(nil, "ARTWORK")
+    local body = frame:CreateTexture(nil, "BACKGROUND")
     body:SetAllPoints(frame);
     body:SetTexture(EnnUF.Backgrounds.Default);
-    body:SetVertexColor(0, 0, 0, 0.7);
+    body:SetVertexColor(0, 0, 0, 0.4);
 
-    local healthBar = frame:CreateTexture(nil, "OVERLAY");
+    local healthBarBg = frame:CreateTexture(nil, "BORDER");
+    healthBarBg:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2);
+    healthBarBg:SetHeight(height/2-3);
+    healthBarBg:SetWidth(width-4);
+    healthBarBg:SetTexture(EnnUF.Bars.Default);
+    healthBarBg:SetVertexColor(0, 0, 0, 0.3);
+    -- healthBarBg:SetAlpha(1);
+
+    local healthBar = frame:CreateTexture(nil, "ARTWORK");
     healthBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2);
     healthBar:SetHeight(height/2-3);
     healthBar:SetWidth(width-4);
@@ -31,7 +39,15 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     healthBarText:SetTextColor(0, 0, 0);
     healthBarText:SetText(nil);
 
-    local manaBar = frame:CreateTexture(nil, "OVERLAY");
+    local manaBarBg = frame:CreateTexture(nil, "BORDER");
+    manaBarBg:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
+    manaBarBg:SetHeight(height/2-3);
+    manaBarBg:SetWidth(width-4);
+    manaBarBg:SetTexture(EnnUF.Bars.Default);
+    manaBarBg:SetVertexColor(0, 0, 0, 0.3);
+    -- manaBarBg:SetAlpha(1);
+
+    local manaBar = frame:CreateTexture(nil, "ARTWORK");
     manaBar:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
     manaBar:SetHeight(height/2-3);
     manaBar:SetWidth(width-4);
@@ -49,6 +65,8 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     newObj.unitid = unitid;
     newObj.frame = frame;
     newObj.body = body;
+    newObj.healthBarBg = healthBarBg;
+    newObj.manaBarBg = manaBarBg;
     newObj.healthBar = healthBar;
     newObj.manaBar = manaBar;
     newObj.healthBarText = healthBarText;
