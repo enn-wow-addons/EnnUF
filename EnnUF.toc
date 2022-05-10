@@ -2,7 +2,7 @@
 ## Title: EnnUF
 ## Notes: Enn Unit Frames
 ## Version: 0.1a
-## Author: Anielle (github.com/anstellaire)
+## Author: Anna Verner (github.com/anstellaire)
 ## SavedVariables:
 
 ## X-License: MIT
