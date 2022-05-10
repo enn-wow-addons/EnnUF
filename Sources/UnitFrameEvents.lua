@@ -5,14 +5,14 @@
 local function UpdateUnitFrameFull(uf)
     if EnnUF_UnitExists(uf.unitid) then
         uf:UpdateHealth(
-            EnnUF_GetHealthPercentage(uf.unitid), EnnUF_UnitHealth(uf.unitid));
+            EnnUF_UnitHealthRel(uf.unitid), EnnUF_UnitHealthAbs(uf.unitid));
         uf:UpdateHealthColor(
-            EnnUF_GetHealthColor(uf.unitid));
+            EnnUF_UnitHealthColor(uf.unitid));
 
         uf:UpdatePower(
-            EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
+            EnnUF_UnitPowerRel(uf.unitid), EnnUF_UnitPowerAbs(uf.unitid));
         uf:UpdatePowerColor(
-            EnnUF_GetPowerColor(uf.unitid));
+            EnnUF_UnitPowerColor(uf.unitid));
 
         uf:Show();
     else
@@ -21,11 +21,11 @@ local function UpdateUnitFrameFull(uf)
 end
 
 local function UpdateUnitFrameHealth(uf)
-    uf:UpdateHealth(EnnUF_GetHealthPercentage(uf.unitid), EnnUF_UnitHealth(uf.unitid));
+    uf:UpdateHealth(EnnUF_UnitHealthRel(uf.unitid), EnnUF_UnitHealthAbs(uf.unitid));
 end
 
 local function UpdateUnitFramePower(uf)
-    uf:UpdatePower(EnnUF_GetPowerPercentage(uf.unitid), EnnUF_UnitPower(uf.unitid));
+    uf:UpdatePower(EnnUF_UnitPowerRel(uf.unitid), EnnUF_UnitPowerAbs(uf.unitid));
 end
 
 local function UpdateUnitFrameSpecialAura(uf)
@@ -34,12 +34,12 @@ local function UpdateUnitFrameSpecialAura(uf)
 
     local _, unitClass = EnnUF_UnitClass(uf.unitid);
     if unitClass == "DRUID" then
-        uf:UpdatePowerColor(EnnUF_GetPowerColor(uf.unitid));
+        uf:UpdatePowerColor(EnnUF_UnitPowerColor(uf.unitid));
     end
 end
 
 local function UpdateUnitFrameSpecialFlags(uf)
-    uf:UpdateHealthColor(EnnUF_GetHealthColor(uf.unitid));
+    uf:UpdateHealthColor(EnnUF_UnitHealthColor(uf.unitid));
 end
 
 ------------------------------

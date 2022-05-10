@@ -9,22 +9,22 @@ function EnnUF_ChatMsg(text)
     DEFAULT_CHAT_FRAME:AddMessage(text);
 end
 
-function EnnUF_GetHealthPercentage(unit)
+function EnnUF_UnitHealthRel(unit)
     return UnitHealth(unit) / UnitHealthMax(unit);
 end
 
 if toc >= 30000 then
-    function EnnUF_GetPowerPercentage(unit, type)
+    function EnnUF_UnitPowerRel(unit, type)
         return UnitPower(unit, type) / UnitPowerMax(unit, type);
     end
 
-    EnnUF_UnitPower = UnitPower;
+    EnnUF_UnitPowerAbs = UnitPower;
 else
-    function EnnUF_GetPowerPercentage(unit, type)
+    function EnnUF_UnitPowerRel(unit, type)
         return UnitMana(unit) / UnitManaMax(unit);
     end
 
-    function EnnUF_UnitPower(unit, type)
+    function EnnUF_UnitPowerAbs(unit, type)
         return UnitMana(unit);
     end
 end
@@ -35,7 +35,7 @@ EnnUF_UnitIsPlayer = UnitIsPlayer;
 EnnUF_UnitIsFriend = UnitIsFriend;
 EnnUF_UnitIsPVP = UnitIsPVP;
 
-EnnUF_UnitHealth = UnitHealth;
+EnnUF_UnitHealthAbs = UnitHealth;
 EnnUF_UnitPowerType = UnitPowerType;
 EnnUF_UnitReaction = UnitReaction;
 EnnUF_UnitClass = UnitClass;
@@ -44,7 +44,7 @@ EnnUF_UnitClass = UnitClass;
 -- Other Helpers --
 -------------------
 
-function EnnUF_GetHealthColor(unit)
+function EnnUF_UnitHealthColor(unit)
     if EnnUF_UnitIsPlayer(unit) then
         if not EnnUF_UnitIsPVP(unit) then
             return EnnUF.Colors.Health.Unflagged
@@ -70,7 +70,7 @@ function EnnUF_GetHealthColor(unit)
     end
 end
 
-function EnnUF_GetPowerColor(unit, uf)
+function EnnUF_UnitPowerColor(unit, uf)
     local powerType = EnnUF_UnitPowerType(unit);
 
     if powerType == 0 then
