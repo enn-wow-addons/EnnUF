@@ -38,6 +38,7 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     healthBarText:SetPoint("CENTER",0,5)
     healthBarText:SetTextColor(0, 0, 0);
     healthBarText:SetText(nil);
+    healthBarText:Hide()
 
     local manaBarBg = frame:CreateTexture(nil, "BORDER");
     manaBarBg:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
@@ -60,6 +61,7 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     manaBarText:SetPoint("CENTER",0,-5)
     manaBarText:SetTextColor(0, 0, 0);
     manaBarText:SetText(nil);
+    manaBarText:Hide()
 
     local newObj = {}
     newObj.unitid = unitid;
