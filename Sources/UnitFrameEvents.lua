@@ -51,17 +51,60 @@ end
 
 EnnUF_UnitFrame_EventHandle = {}
 
-EnnUF_UnitFrame_EventHandle["ADDON_LOADED"]          = UpdateUnitFrameFull
-EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = UpdateUnitFrameFull
-EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = UpdateUnitFrameFull
-EnnUF_UnitFrame_EventHandle["PLAYER_FOCUS_CHANGED"]  = UpdateUnitFrameFull
-EnnUF_UnitFrame_EventHandle["UNIT_TARGET"]           = UpdateUnitFrameFull
+EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
+    UpdateUnitFrameFull(uf)
+end
 
-EnnUF_UnitFrame_EventHandle["UNIT_HEALTH"]          = UpdateUnitFrameHealth
-EnnUF_UnitFrame_EventHandle["UNIT_HEALTH_FREQUENT"] = UpdateUnitFrameHealth
+EnnUF_UnitFrame_EventHandle["PLAYER_ENTERING_WORLD"] = function(uf)
+    UpdateUnitFrameFull(uf)
+end
 
-EnnUF_UnitFrame_EventHandle["UNIT_MANA"]   = UpdateUnitFramePower
-EnnUF_UnitFrame_EventHandle["UNIT_ENERGY"] = UpdateUnitFramePower
+EnnUF_UnitFrame_EventHandle["PLAYER_TARGET_CHANGED"] = function(uf)
+    if uf.unitid ~= "target" and uf.unitid ~= "targettarget" then return end
+    UpdateUnitFrameFull(uf)
+end
 
-EnnUF_UnitFrame_EventHandle["UNIT_AURA"]  = UpdateUnitFrameSpecialAura
-EnnUF_UnitFrame_EventHandle["UNIT_FLAGS"] = UpdateUnitFrameSpecialFlags
+EnnUF_UnitFrame_EventHandle["PLAYER_FOCUS_CHANGED"] = function(uf)
+    if uf.unitid ~= "focus" and uf.unitid ~= "focustarget" then return end
+    UpdateUnitFrameFull(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_TARGET"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFrameFull(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_HEALTH"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFrameHealth(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_HEALTH_FREQUENT"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFrameHealth(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_MANA"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFramePower(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_ENERGY"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFramePower(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_POWER"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFramePower(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFrameSpecialAura(uf)
+end
+
+EnnUF_UnitFrame_EventHandle["UNIT_FLAGS"] = function(uf)
+    if uf.unitid ~= arg1 then return end
+    UpdateUnitFrameSpecialFlags(uf)
+end
