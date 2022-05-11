@@ -10,6 +10,7 @@
 
 Assets\Assets.lua
 
+Sources\Config.lua
 Sources\Helpers.lua
 Sources\UnitFrame.lua
 Sources\UnitFrameEvents.lua

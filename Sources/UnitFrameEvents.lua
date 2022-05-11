@@ -124,8 +124,8 @@ end
 -- Unit Frame Event Register --
 -------------------------------
 
-function EnnUF_CreateAndRegister(unitid, x, y, width, height)
-    local uf = EnnUF.UnitFrame:new(unitid, x, y, width, height)
+function EnnUF_CreateAndRegister(unitid, conf)
+    local uf = EnnUF.UnitFrame:new(unitid, conf.x, conf.y, conf.width, conf.height)
 
     uf:SetEventHandler(function()
         if EnnUF_UnitFrame_EventHandle[event] then
