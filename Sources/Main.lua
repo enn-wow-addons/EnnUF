@@ -1,60 +1,22 @@
-
-------------------------------
--- Player Unit Frame Loader --
-------------------------------
-
-local EnnUF_PlayerFrame;
-
-local function EnnUF_PlayerUF_Load()
-    EnnUF_PlayerFrame = EnnUF.UnitFrame:new("player", 0, -250, 180, 14);
-
-    EnnUF_PlayerFrame:SetEventHandler(function()
-        if EnnUF_UnitFrame_EventHandle[event] then
-            EnnUF_UnitFrame_EventHandle[event](EnnUF_PlayerFrame);
-        end
-    end);
-
-    EnnUF_PlayerFrame:RegisterEvent("ADDON_LOADED");
-    EnnUF_PlayerFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
-    EnnUF_PlayerFrame:RegisterEvent("UNIT_HEALTH");
-    EnnUF_PlayerFrame:RegisterEvent("UNIT_HEALTH_FREQUENT");
-    EnnUF_PlayerFrame:RegisterEvent("UNIT_MANA");
-    EnnUF_PlayerFrame:RegisterEvent("UNIT_ENERGY");
-
-    EnnUF_PlayerFrame:RegisterEvent("UNIT_FLAGS");
-    EnnUF_PlayerFrame:RegisterEvent("PLAYER_AURAS_CHANGED");
-end
-
-------------------------------
--- Target Unit Frame Loader --
-------------------------------
-
-local EnnUF_TargetFrame;
-
-local function EnnUF_TargetUF_Load()
-    EnnUF_TargetFrame = EnnUF.UnitFrame:new("target", 0, -200, 200, 20);
-
-    EnnUF_TargetFrame:SetEventHandler(function()
-        if EnnUF_UnitFrame_EventHandle[event] then
-            EnnUF_UnitFrame_EventHandle[event](EnnUF_TargetFrame);
-        end
-    end);
-
-    EnnUF_TargetFrame:RegisterEvent("ADDON_LOADED");
-    EnnUF_TargetFrame:RegisterEvent("PLAYER_ENTERING_WORLD");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_HEALTH");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_HEALTH_FREQUENT");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_MANA");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_ENERGY");
-
-    EnnUF_TargetFrame:RegisterEvent("UNIT_FLAGS");
-    EnnUF_TargetFrame:RegisterEvent("UNIT_AURA");
-    EnnUF_TargetFrame:RegisterEvent("PLAYER_TARGET_CHANGED");
-end
-
-------------
--- Loader --
-------------
-
-EnnUF_PlayerUF_Load();
-EnnUF_TargetUF_Load();
+local EnnUF_PlayerFrame =
+    EnnUF_CreateAndRegister("player", 0, -250, 180, 14)
+local EnnUF_PetFrame =
+    EnnUF_CreateAndRegister("pet", -180, -250, 80, 14)
+local EnnUF_TargetFrame =
+    EnnUF_CreateAndRegister("target", 0, -200, 200, 20)
+local EnnUF_FocusFrame =
+    EnnUF_CreateAndRegister("focus", 0, -225, 200, 20)
+local EnnUF_TargetTargetFrame =
+    EnnUF_CreateAndRegister("targettarget", 200, -200, 80, 14)
+local EnnUF_FocusTargetFrame =
+    EnnUF_CreateAndRegister("focustarget", 200, -225, 80, 14)
+local EnnUF_Party1Frame =
+    EnnUF_CreateAndRegister("party1", -280, -200, 80, 14)
+local EnnUF_Party2Frame =
+    EnnUF_CreateAndRegister("party2", -280, -220, 80, 14);
+local EnnUF_Party3Frame =
+    EnnUF_CreateAndRegister("party3", -280, -240, 80, 14);
+local EnnUF_Party4Frame =
+    EnnUF_CreateAndRegister("party4", -280, -260, 80, 14);
+local EnnUF_Party5Frame =
+    EnnUF_CreateAndRegister("party5", -280, -280, 80, 14);

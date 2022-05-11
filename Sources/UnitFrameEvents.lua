@@ -49,7 +49,7 @@ end
 -- Unit Frame Event Handles --
 ------------------------------
 
-EnnUF_UnitFrame_EventHandle = {}
+local EnnUF_UnitFrame_EventHandle = {}
 
 EnnUF_UnitFrame_EventHandle["ADDON_LOADED"] = function(uf)
     UpdateUnitFrameFull(uf)
@@ -118,4 +118,37 @@ EnnUF_UnitFrame_EventHandle["UNIT_FLAGS"] = function(uf)
     -- NOTE: doesn't work if unit is not a party or raid member
     -- if uf.unitid ~= arg1 then return end
     UpdateUnitFrameSpecialFlags(uf)
+end
+
+-------------------------------
+-- Unit Frame Event Register --
+-------------------------------
+
+function EnnUF_CreateAndRegister(unitid, x, y, width, height)
+    local uf = EnnUF.UnitFrame:new(unitid, x, y, width, height)
+
+    uf:SetEventHandler(function()
+        if EnnUF_UnitFrame_EventHandle[event] then
+            EnnUF_UnitFrame_EventHandle[event](uf);
+        end
+    end);
+
+    -- Recreate unit frame
+    uf:RegisterEvent("ADDON_LOADED");
+    uf:RegisterEvent("PLAYER_ENTERING_WORLD");
+    -- Update unit frame completely
+    uf:RegisterEvent("UNIT_TARGET");
+    uf:RegisterEvent("PLAYER_TARGET_CHANGED"); -- for @target, @targettarget
+    uf:RegisterEvent("PLAYER_FOCUS_CHANGED"); -- for @focus, @focustarget
+    -- Update unit frame health
+    uf:RegisterEvent("UNIT_HEALTH");
+    uf:RegisterEvent("UNIT_HEALTH_FREQUENT");
+    -- Update unit frame power
+    uf:RegisterEvent("UNIT_MANA");
+    uf:RegisterEvent("UNIT_ENERGY");
+    -- Update unit frame in special case
+    uf:RegisterEvent("UNIT_AURA");
+    uf:RegisterEvent("UNIT_FLAGS");
+
+    return uf;
 end
