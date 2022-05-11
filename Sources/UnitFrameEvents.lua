@@ -70,41 +70,52 @@ EnnUF_UnitFrame_EventHandle["PLAYER_FOCUS_CHANGED"] = function(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_TARGET"] = function(uf)
-    if uf.unitid ~= arg1 then return end
-    UpdateUnitFrameFull(uf)
+    -- NOTE: PLAYER_TARGET_CHANGED can be removed with additional checks:
+    -- (arg1 == "player" and uf.unitid == "target") or
+    -- (arg1 == "player" and uf.unitid == "targettarget") or
+    if arg1.."target" == uf.unitid then
+        UpdateUnitFrameFull(uf)
+    end
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_HEALTH"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFrameHealth(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_HEALTH_FREQUENT"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFrameHealth(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_MANA"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFramePower(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_ENERGY"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFramePower(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_POWER"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFramePower(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_AURA"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFrameSpecialAura(uf)
 end
 
 EnnUF_UnitFrame_EventHandle["UNIT_FLAGS"] = function(uf)
-    if uf.unitid ~= arg1 then return end
+    -- NOTE: doesn't work if unit is not a party or raid member
+    -- if uf.unitid ~= arg1 then return end
     UpdateUnitFrameSpecialFlags(uf)
 end
