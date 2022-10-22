@@ -1,4 +1,4 @@
-## Interface: 30300
+## Interface: 30400
 ## Title: EnnUF
 ## Notes: Enn Unit Frames
 ## Version: 0.1a
