@@ -8,10 +8,13 @@
 ## X-License: MIT
 ## X-Website: https://github.com/anstellaire/EnnUF
 
-Assets\Assets.lua
+Res\Res.lua
 
-Sources\Config.lua
-Sources\Helpers.lua
-Sources\UnitFrame.lua
-Sources\UnitFrameEvents.lua
-Sources\Main.lua
+Src\Api.lua
+Src\Conf.lua
+
+Src\UnitFrame.lua
+Src\UnitFramePainter.lua
+Src\UnitFrameUpdater.lua
+
+Src\Main.lua

@@ -1,12 +1,12 @@
-
 ----------------------
 -- Unit Frame Class --
 ----------------------
 
-EnnUF.UnitFrame = {}
-EnnUF.UnitFrame.__index = EnnUF.UnitFrame;
+EnnUF_UnitFrame = {}
+EnnUF_UnitFrame.__index = EnnUF_UnitFrame;
 
-function EnnUF.UnitFrame:new(unitid, x, y, width, height)
+-- TODO: remove hardcoded size constants and make them dependent on size preset
+function EnnUF_UnitFrame:new(unitid, x, y, width, height)
     local frame=CreateFrame("Frame", nil, UIParent);
     frame:SetPoint("CENTER", UIParent, "CENTER", x, y);
     frame:SetHeight(height);
@@ -14,14 +14,14 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
 
     local body = frame:CreateTexture(nil, "BACKGROUND")
     body:SetAllPoints(frame);
-    body:SetTexture(EnnUF.Backgrounds.Default);
+    body:SetTexture(EnnUF_Res.Bgs.Default);
     body:SetVertexColor(0, 0, 0, 0.4);
 
     local healthBarBg = frame:CreateTexture(nil, "BORDER");
     healthBarBg:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2);
     healthBarBg:SetHeight(height/2-3);
     healthBarBg:SetWidth(width-4);
-    healthBarBg:SetTexture(EnnUF.Bars.Default);
+    healthBarBg:SetTexture(EnnUF_Res.Bars.Default);
     healthBarBg:SetVertexColor(0, 0, 0, 0.3);
     -- healthBarBg:SetAlpha(1);
 
@@ -29,12 +29,12 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     healthBar:SetPoint("TOPLEFT", frame, "TOPLEFT", 2, -2);
     healthBar:SetHeight(height/2-3);
     healthBar:SetWidth(width-4);
-    healthBar:SetTexture(EnnUF.Bars.Default);
+    healthBar:SetTexture(EnnUF_Res.Bars.Default);
     healthBar:SetVertexColor(1, 1, 1, 1);
     healthBar:SetAlpha(1);
 
     local healthBarText = frame:CreateFontString(nil,"OVERLAY");
-    healthBarText:SetFont(EnnUF.Fonts.Default, 10, "HIGHLIGHT");
+    healthBarText:SetFont(EnnUF_Res.Fonts.Default, 10, "HIGHLIGHT");
     healthBarText:SetPoint("CENTER",0,5)
     healthBarText:SetTextColor(0, 0, 0);
     healthBarText:SetText(nil);
@@ -44,7 +44,7 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     manaBarBg:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
     manaBarBg:SetHeight(height/2-3);
     manaBarBg:SetWidth(width-4);
-    manaBarBg:SetTexture(EnnUF.Bars.Default);
+    manaBarBg:SetTexture(EnnUF_Res.Bars.Default);
     manaBarBg:SetVertexColor(0, 0, 0, 0.3);
     -- manaBarBg:SetAlpha(1);
 
@@ -52,12 +52,12 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     manaBar:SetPoint("BOTTOMLEFT", frame, "BOTTOMLEFT", 2, 2);
     manaBar:SetHeight(height/2-3);
     manaBar:SetWidth(width-4);
-    manaBar:SetTexture(EnnUF.Bars.Default);
+    manaBar:SetTexture(EnnUF_Res.Bars.Default);
     manaBar:SetVertexColor(1, 1, 1, 1);
     manaBar:SetAlpha(1);
 
     local manaBarText = frame:CreateFontString(nil,"OVERLAY");
-    manaBarText:SetFont(EnnUF.Fonts.Default, 10, "HIGHLIGHT");
+    manaBarText:SetFont(EnnUF_Res.Fonts.Default, 10, "HIGHLIGHT");
     manaBarText:SetPoint("CENTER",0,-5)
     manaBarText:SetTextColor(0, 0, 0);
     manaBarText:SetText(nil);
@@ -74,49 +74,51 @@ function EnnUF.UnitFrame:new(unitid, x, y, width, height)
     newObj.healthBarText = healthBarText;
     newObj.manaBarText = manaBarText;
 
-    return setmetatable(newObj, EnnUF.UnitFrame);
+    return setmetatable(newObj, EnnUF_UnitFrame);
 end
 
 ------------------------
 -- Unit Frame Methods --
 ------------------------
 
-function EnnUF.UnitFrame:UpdateHealthColor(color)
+function EnnUF_UnitFrame:UpdateHealthColor(color)
     self.healthBar:SetVertexColor(color.r, color.g, color.b, color.a);
 end
 
-function EnnUF.UnitFrame:UpdatePowerColor(color)
+function EnnUF_UnitFrame:UpdatePowerColor(color)
     self.manaBar:SetVertexColor(color.r, color.g, color.b, color.a);
 end
 
-function EnnUF.UnitFrame:UpdateHealth(percent)
+function EnnUF_UnitFrame:UpdateHealth(percent)
+    -- TODO: remove hardcoded constant and make it dependent on size preset
     self.healthBar:SetWidth(self.frame:GetWidth() * percent - 4);
 end
 
-function EnnUF.UnitFrame:UpdatePower(percent)
+function EnnUF_UnitFrame:UpdatePower(percent)
+    -- TODO: remove hardcoded constant and make it dependent on size preset
     self.manaBar:SetWidth(self.frame:GetWidth() * percent - 4);
 end
 
-function EnnUF.UnitFrame:UpdateHealthText(text)
+function EnnUF_UnitFrame:UpdateHealthText(text)
     self.healthBarText:SetText(text);
 end
 
-function EnnUF.UnitFrame:UpdatePowerText(text)
+function EnnUF_UnitFrame:UpdatePowerText(text)
     self.manaBarText:SetText(text);
 end
 
-function EnnUF.UnitFrame:Show()
+function EnnUF_UnitFrame:Show()
     self.frame:Show();
 end
 
-function EnnUF.UnitFrame:Hide()
+function EnnUF_UnitFrame:Hide()
     self.frame:Hide();
 end
 
-function EnnUF.UnitFrame:SetEventHandler(eventHandler)
+function EnnUF_UnitFrame:SetEventHandler(eventHandler)
     self.frame:SetScript("OnEvent", eventHandler);
 end
 
-function EnnUF.UnitFrame:RegisterEvent(eventName)
+function EnnUF_UnitFrame:RegisterEvent(eventName)
     self.frame:RegisterEvent(eventName);
 end
